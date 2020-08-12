@@ -2,7 +2,7 @@ package multi_threads;
 
 import java.util.Scanner;
 
-public class Test {
+public class TestVolotile {
     public static void main(String[] args) {
         MyThread myThread = new MyThread();
         myThread.start();
@@ -14,7 +14,9 @@ public class Test {
 }
 
 class MyThread extends Thread {
-    private boolean running = true;
+    // volatile гарантирует когерентность кэшей.
+    // Обращаемся к главной памяти
+    private volatile boolean running = true;
 
     @Override
     public void run() {
